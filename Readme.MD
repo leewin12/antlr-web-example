@@ -15,8 +15,15 @@ CORS issue로 인하여 local staticfile로서 동작은 어려움.
 # Compiling And Running
 
 ```bash
-$ gradle generateParser
+$ ./gradlew generateParser4JS
 $ pip install flask
 $ python webserver.py 
 ```
 
+또는
+
+```bash
+$ ./gradlew generateParser4Java
+$ echo "123 * 34.12" > test.txt
+$ ./gradlew runExpr
+```

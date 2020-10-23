@@ -5,11 +5,36 @@ repositories {
 }
 
 dependencies {
-    runtime 'org.antlr:antlr4:4.7.2'
+    implementation 'org.antlr:antlr4:4.7.2'
 }
 
-task generateParser(type:JavaExec) {
+clean {
+    delete "src/main/java/generated-parser"
+    delete "static/generated-parser"
+}
+
+task generateParser4JS(type:JavaExec) {
    main = 'org.antlr.v4.Tool'
    classpath = sourceSets.main.runtimeClasspath
    args = ['-Dlanguage=JavaScript', 'calc.g4', '-o', 'static/generated-parser']
+}
+
+task generateParser4Java(type:JavaExec) {
+    main = 'org.antlr.v4.Tool'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['-Dlanguage=Java', 'calc.g4', '-o', 'src/main/java/generated-parser']
+}
+
+/**
+ * java org.antlr.v4.gui.TestRig GrammarName startRuleName
+ *   [-tokens] [-tree] [-gui] [-ps file.ps] [-encoding encodingname]
+ *   [-trace] [-diagnostics] [-SLL]
+ *   [input-filename(s)]
+ * Use startRuleName='tokens' if GrammarName is a lexer grammar.
+ * Omitting input-filename makes rig read from stdin.
+ */
+task runExpr(type:JavaExec) {
+    main = 'org.antlr.v4.gui.TestRig'
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['calc', 'expression', '-tokens', '-trace', "test.txt"]
 }
