@@ -9,7 +9,7 @@
     clear:left;
 }
 
-.todoElement {
+.elem {
     background: beige;
     display: inline-block;
     padding: 5px;

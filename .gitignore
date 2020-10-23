@@ -1,3 +1,4 @@
 .gradle
 .venv
 .idea
+static/generated-parser/**

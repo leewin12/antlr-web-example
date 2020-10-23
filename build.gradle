@@ -5,11 +5,11 @@ repositories {
 }
 
 dependencies {
-    runtime 'org.antlr:antlr4:4.5.2'
+    runtime 'org.antlr:antlr4:4.7.2'
 }
 
 task generateParser(type:JavaExec) {
    main = 'org.antlr.v4.Tool'
    classpath = sourceSets.main.runtimeClasspath
-   args = ['-Dlanguage=JavaScript', 'todo.g4', '-o', 'static/generated-parser']
+   args = ['-Dlanguage=JavaScript', 'calc.g4', '-o', 'static/generated-parser']
 }
