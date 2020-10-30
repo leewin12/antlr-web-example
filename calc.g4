@@ -12,11 +12,11 @@ NUMBER
   ;
 
 fragment INT
-  : [0-9]+
+  : '-'?[0-9]+
   ;
 
 fragment FLOAT
-  : [0-9]+.[0-9]+
+  : '-'?[0-9]+.[0-9]+
   ;
 
 OPERATOR
